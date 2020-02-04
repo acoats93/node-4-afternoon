@@ -4,7 +4,7 @@ let id = 1;
 
 module.exports = {
     register:(req,res) =>{
-        const {session} = req;
+        const {session} = req.session.user;
         const {username, password} = req.body;
 
         users.push({id, username, password});
@@ -26,7 +26,7 @@ module.exports = {
         }
     },
     signout:(req,res) => {
-        req.session.destroy;
+        req.session.destroy();
         res.status(200).json(req.session)
     },
     getUser:(req,res) =>{
